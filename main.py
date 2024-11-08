@@ -20,9 +20,9 @@ import tempfile  # 임시 파일 생성 및 관리 모듈
 # 애플리케이션 실행 함수 정의
 def main():
     # 페이지 설정 (Streamlit 상단 바 구성)
-    st.set_page_config(page_title="에너지", page_icon="🌻")  # 웹 페이지 제목과 아이콘 설정
-    st.image('energy.png')  # 상단에 이미지를 표시
-    st.title("_:red[에너지 학습 도우미]_ 🏫")  # 제목 표시 (에너지 학습 도우미)
+    st.set_page_config(page_title="우리 마을", page_icon="🌻")  # 웹 페이지 제목과 아이콘 설정
+    st.image('my.png')  # 상단에 이미지를 표시
+    st.title("_:red[우리 마을이 궁금해요]_ 🏫")  # 제목 표시 (에너지 학습 도우미)
     st.header("😶주의! 이 챗봇은 참고용으로 사용하세요!", divider='rainbow')  # 주의사항 표시
 
     # 세션 상태 초기화
@@ -42,7 +42,8 @@ def main():
     with st.sidebar:
         folder_path = Path()  # 텍스트 파일이 있는 폴더 경로 (현재 경로)
         openai_api_key = st.secrets["OPENAI_API_KEY"]  # OpenAI API 키 설정 (Streamlit secrets 사용)
-        model_name = 'gpt-4o-mini'  # 사용할 OpenAI 모델 이름 설정
+        model_name = 'gpt-4o-mini'  
+        # gpt-4or gpt-4o
         
         # 사이드바에 안내 메시지 및 Process 버튼
         st.text("아래의 'Process'를 누르고\n아래 채팅창이 활성화 될 때까지\n잠시 기다리세요!😊😊😊")
@@ -90,8 +91,8 @@ def main():
         if clear_button:
             # 대화 기록과 초기 메시지를 초기화
             st.session_state.chat_history = []
-            st.session_state.messages = [{"role": "assistant", "content": "😊"}]
-            st.experimental_set_query_params()  # 화면을 다시 로드하여 대화 내용을 초기화
+            st.session_state.messages = [{"role": "assistant", "content": "우리 마을에 대해 물어보세요!😊"}]
+            st.experimental_set_query_params()  # 화면을 다시 로드하여 대화 내용을 초기화 
 
     # 질문 입력 필드 (음성 입력 또는 텍스트 입력을 통한 질문)
     query = st.session_state.voice_input or st.chat_input("질문을 입력해주세요.")
